@@ -17,9 +17,8 @@ int main() {
             SDL_WINDOW_RESIZABLE
     );
 
-    SDL_Surface* surface = SDL_GetWindowSurface(window);
-
     while(1) {
+        SDL_Surface* surface = SDL_GetWindowSurface(window);
         SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0x0, 0x0, 0x0));
         SDL_UpdateWindowSurface(window);
         SDL_Event event;
@@ -30,8 +29,5 @@ int main() {
             }
         }
     }
-
     return 0;
-
-
 }
