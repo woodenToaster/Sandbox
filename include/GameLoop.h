@@ -16,5 +16,4 @@ private:
     bool running;
 };
 
-
 #endif //SANDBOX_GAMELOOP_H

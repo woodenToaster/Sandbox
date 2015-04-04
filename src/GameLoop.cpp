@@ -14,7 +14,6 @@ Video* GameLoop::getVideo() {
     return video;
 }
 
-
 void GameLoop::run() {
     while(running) {
         SDL_Event event;
@@ -25,8 +24,8 @@ void GameLoop::run() {
                     break;
                 case SDL_WINDOWEVENT_RESIZED:
                     video->setSurface(SDL_GetWindowSurface(video->getWindow()));
-                    SDL_FillRect(video->getSurface(), NULL, SDL_MapRGB(video->getSurface()->format, 0x0, 0x0, 0x0));
-                    SDL_UpdateWindowSurface(video->getWindow());
+                    video->fillRect(0, 0, 0);
+                    video->update();
                     break;
                 default:
                     break;

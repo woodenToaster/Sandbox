@@ -6,20 +6,17 @@
 class Video {
 
 public:
-
     Video();
     ~Video();
     void init();
     SDL_Window* getWindow();
-    SDL_Surface* getSurface();
     void setSurface(SDL_Surface* newSurface);
+    void fillRect(int r, int g, int b);
+    void update();
 
 private:
     SDL_Window* window;
     SDL_Surface* surface;
-
-
 };
-
 
 #endif //SANDBOX_VIDEO_H

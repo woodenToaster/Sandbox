@@ -22,17 +22,19 @@ void Video::init() {
     );
 
     surface = SDL_GetWindowSurface(window);
+    fillRect(0, 0, 0);
+    update();
+}
 
-    SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, 0x0, 0x0, 0x0));
+void Video::fillRect(int r, int g, int b) {
+    SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, r, g, b));
+}
+
+void Video::update() {
     SDL_UpdateWindowSurface(window);
 }
-
 SDL_Window* Video::getWindow() {
     return window;
-}
-
-SDL_Surface* Video::getSurface() {
-    return surface;
 }
 
 void Video::setSurface(SDL_Surface *newSurface) {
