@@ -1,5 +1,4 @@
 #include "GameLoop.h"
-#include "SDL.h"
 
 GameLoop::GameLoop(): running(true) {
     video = new Video();
@@ -8,10 +7,6 @@ GameLoop::GameLoop(): running(true) {
 
 GameLoop::~GameLoop() {
     delete video;
-}
-
-Video* GameLoop::getVideo() {
-    return video;
 }
 
 void GameLoop::run() {
@@ -23,14 +18,18 @@ void GameLoop::run() {
                     running = false;
                     break;
                 case SDL_WINDOWEVENT_RESIZED:
-                    video->setSurface(SDL_GetWindowSurface(video->getWindow()));
-                    video->fillRect(0, 0, 0);
-                    video->update();
+                    update();
                     break;
                 default:
                     break;
             }
         }
-        SDL_Delay(30);
+        video->delay(30);
     }
+}
+
+void GameLoop::update() {
+    video->setSurfaceToMain();
+    video->fillRect(0, 0, 0);
+    video->update();
 }

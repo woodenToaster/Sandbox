@@ -26,6 +26,10 @@ void Video::init() {
     update();
 }
 
+void Video::setSurfaceToMain() {
+    surface = SDL_GetWindowSurface(window);
+}
+
 void Video::fillRect(int r, int g, int b) {
     SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, r, g, b));
 }
@@ -33,10 +37,7 @@ void Video::fillRect(int r, int g, int b) {
 void Video::update() {
     SDL_UpdateWindowSurface(window);
 }
-SDL_Window* Video::getWindow() {
-    return window;
-}
 
-void Video::setSurface(SDL_Surface *newSurface) {
-    surface = newSurface;
+void Video::delay(unsigned int ms) {
+    SDL_Delay(ms);
 }

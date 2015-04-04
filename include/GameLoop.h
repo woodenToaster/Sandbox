@@ -9,7 +9,7 @@ public:
     GameLoop();
     ~GameLoop();
     void run();
-    Video* getVideo();
+    void update();
 
 private:
     Video* video;
