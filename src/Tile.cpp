@@ -17,8 +17,6 @@ SDL_Rect* Tile::getLocationInTileset() {
     return location;
 }
 
-void Tile::render(Video* vid) {
-    SDL_Rect dest = {0, 0, 32, 32};
-
-    SDL_BlitSurface(image, location, vid->getMainSurface(), &dest);
+void Tile::render(Video* vid, SDL_Rect* dest) {
+    SDL_BlitSurface(image, location, vid->getMainSurface(), dest);
 }

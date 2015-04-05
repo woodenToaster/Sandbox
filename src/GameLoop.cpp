@@ -4,7 +4,7 @@ GameLoop::GameLoop(): running(true) {
     video = new Video();
     video->init();
     event = new Event();
-    char* const file = "ground.png";
+    char* file = "ground.png";
     map = new Map(video, file);
     map->init();
 

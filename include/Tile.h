@@ -10,7 +10,7 @@ public:
     ~Tile();
     SDL_Surface* getImage();
     SDL_Rect* getLocationInTileset();
-    void render(Video* vid);
+    void render(Video* vid, SDL_Rect* dest);
 
 private:
     SDL_Surface* image;

@@ -6,7 +6,21 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(SOURCE_FILES src/main.cpp)
 set(INCLUDE_DIR include)
 
-add_executable(Sandbox ${SOURCE_FILES} test/catch.hpp test/test.h test/test.cpp src/Video.cpp ${INCLUDE_DIR}/Video.h src/GameLoop.cpp include/GameLoop.h src/Event.cpp include/Event.h include/Map.h include/Tile.h src/Tile.cpp src/Map.cpp)
+add_executable(Sandbox ${SOURCE_FILES}
+    test/catch.hpp
+    test/test.h
+    test/test.cpp
+    src/Video.cpp
+    ${INCLUDE_DIR}/Video.h
+    src/GameLoop.cpp
+    include/GameLoop.h
+    src/Event.cpp
+    include/Event.h
+    include/Map.h
+    include/Tile.h
+    src/Tile.cpp
+    src/Map.cpp
+)
 
 include(FindPkgConfig)
 
