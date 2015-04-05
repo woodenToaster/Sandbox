@@ -30,6 +30,10 @@ SDL_Surface* Video::getMainSurface() {
     return surface;
 }
 
+SDL_Window* Video::getMainWindow() {
+    return window;
+}
+
 void Video::setSurfaceToMain() {
     surface = SDL_GetWindowSurface(window);
 }

@@ -9,11 +9,13 @@ public:
     Video();
     ~Video();
     SDL_Surface* getMainSurface();
+    SDL_Window* getMainWindow();
     void init();
     void fillRect(int r, int g, int b);
     void update();
     void delay(unsigned int ms);
     void setSurfaceToMain();
+
 
 private:
     SDL_Window* window;

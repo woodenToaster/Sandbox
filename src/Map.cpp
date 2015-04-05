@@ -1,9 +1,14 @@
+#include <iostream>
 #include "Map.h"
 #include "SDL_image.h"
 
 Map::Map(Video* vid, char* file): video(vid) {
     IMG_Init(IMG_INIT_PNG);
     tileset = IMG_Load(file);
+    if(!tileset) {
+        std::cout << "Error" << '\n';
+        std::cout << IMG_GetError() << '\n';
+    }
 }
 
 Map::~Map() {
