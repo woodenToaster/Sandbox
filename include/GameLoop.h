@@ -2,6 +2,7 @@
 #define SANDBOX_GAMELOOP_H
 
 #include "Event.h"
+#include "Map.h"
 #include "Video.h"
 
 
@@ -16,6 +17,7 @@ public:
 
 private:
     Event* event;
+    Map* map;
     Video* video;
     bool running;
 };

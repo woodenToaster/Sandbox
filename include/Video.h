@@ -8,6 +8,7 @@ class Video {
 public:
     Video();
     ~Video();
+    SDL_Surface* getMainSurface();
     void init();
     void fillRect(int r, int g, int b);
     void update();

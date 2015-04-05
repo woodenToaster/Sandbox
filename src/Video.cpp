@@ -26,6 +26,10 @@ void Video::init() {
     update();
 }
 
+SDL_Surface* Video::getMainSurface() {
+    return surface;
+}
+
 void Video::setSurfaceToMain() {
     surface = SDL_GetWindowSurface(window);
 }

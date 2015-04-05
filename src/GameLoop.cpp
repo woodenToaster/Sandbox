@@ -4,6 +4,10 @@ GameLoop::GameLoop(): running(true) {
     video = new Video();
     video->init();
     event = new Event();
+    char* const file = "../images/ground.png";
+    map = new Map(video, file);
+    map->init();
+
 }
 
 GameLoop::~GameLoop() {
@@ -17,12 +21,13 @@ void GameLoop::run() {
             processEvent(event->getType());
         }
         video->delay(30);
+        map->render();
     }
 }
 
 void GameLoop::update() {
     video->setSurfaceToMain();
-    video->fillRect(0, 0, 0);
+    //video->fillRect(0, 0, 0);
     video->update();
 }
 
