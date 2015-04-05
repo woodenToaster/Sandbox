@@ -6,8 +6,7 @@
 class Event {
 public:
     enum EventType {
-        WINDOW_CLOSED,
-        WINDOW_RESIZED
+        WINDOW_CLOSED
     };
 
     Event();
@@ -15,12 +14,8 @@ public:
     int pollEvent();
     int getType();
 
-
-
 private:
     SDL_Event event;
-
-
 };
 
 #endif //SANDBOX_EVENT_H

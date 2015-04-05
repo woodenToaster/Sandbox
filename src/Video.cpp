@@ -18,7 +18,7 @@ void Video::init() {
         SDL_WINDOWPOS_CENTERED,
         640,
         480,
-        SDL_WINDOW_RESIZABLE
+        0
     );
 
     surface = SDL_GetWindowSurface(window);

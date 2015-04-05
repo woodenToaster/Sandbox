@@ -21,14 +21,12 @@ void GameLoop::run() {
             processEvent(event->getType());
         }
         video->delay(30);
-        map->render();
-        video->update();
+        update();
     }
 }
 
 void GameLoop::update() {
-    video->setSurfaceToMain();
-    video->fillRect(0, 0, 0);
+    map->render();
     video->update();
 }
 
@@ -36,9 +34,6 @@ void GameLoop::processEvent(int type) {
     switch(type) {
         case Event::WINDOW_CLOSED:
             running = false;
-            break;
-        case Event::WINDOW_RESIZED:
-            update();
             break;
         default:
             break;
