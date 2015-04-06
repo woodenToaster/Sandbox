@@ -9,7 +9,7 @@ Event::~Event() {
 }
 
 int Event::pollEvent() {
-    SDL_PollEvent(&event);
+    return SDL_PollEvent(&event);
 }
 
 int Event::getType() {

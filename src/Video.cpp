@@ -13,7 +13,7 @@ Video::~Video() {
 
 void Video::init() {
     window = SDL_CreateWindow(
-        "First Window",
+        "Sandbox",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
         640,
