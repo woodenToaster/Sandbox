@@ -2,7 +2,6 @@
 #define SANDBOX_MAP_H
 
 #include <vector>
-#include "Event.h"
 #include "Tile.h"
 #include "Tileset.h"
 #include "Video.h"
@@ -16,10 +15,8 @@ public:
 
 private:
     std::vector<Tile*> tiles;
-    Event* event;
     Video* video;
     Tileset* tileset;
-
 
 };
 

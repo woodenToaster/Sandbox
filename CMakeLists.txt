@@ -10,6 +10,7 @@ set(SOURCE_FILES
     ${SOURCE_DIR}/GameLoop.cpp
     ${SOURCE_DIR}/Event.cpp
     ${SOURCE_DIR}/Tile.cpp
+    ${SOURCE_DIR}/CollectibleTile.cpp
     ${SOURCE_DIR}/Map.cpp
     ${SOURCE_DIR}/Tileset.cpp
 )
