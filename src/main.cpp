@@ -1,6 +1,7 @@
 #include <GameLoop.h>
 
 int main() {
-    GameLoop().run();
+    Game* game = new Game();
+    GameLoop(game).run();
     return 0;
 }

@@ -5,11 +5,16 @@
 
 class Tileset {
 public:
-    Tileset();
+    Tileset(const char* imgFile);
     ~Tileset();
+    int getTilesetImgWidth() const;
+    int getTilesetImgHeight() const;
+    SDL_Surface* getTilesetImg() const;
 
 private:
     SDL_Surface* tilesetImg;
+    int tilesetImgWidth;
+    int tilesetImgHeight;
 
 };
 

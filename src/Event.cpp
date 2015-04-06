@@ -13,10 +13,5 @@ int Event::pollEvent() {
 }
 
 int Event::getType() {
-    switch(event.window.event) {
-        case SDL_WINDOWEVENT_CLOSE:
-            return Event::WINDOW_CLOSED;
-        default:
-            return -1;
-    }
+    return event.window.event == SDL_WINDOWEVENT_CLOSE ? Event::WINDOW_CLOSED : -1;
 }

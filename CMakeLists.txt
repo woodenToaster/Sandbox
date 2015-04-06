@@ -6,6 +6,7 @@ set(SOURCE_DIR src)
 set(SOURCE_FILES
     ${SOURCE_DIR}/main.cpp
     ${SOURCE_DIR}/Video.cpp
+    ${SOURCE_DIR}/Game.cpp
     ${SOURCE_DIR}/GameLoop.cpp
     ${SOURCE_DIR}/Event.cpp
     ${SOURCE_DIR}/Tile.cpp

@@ -2,20 +2,24 @@
 #define SANDBOX_MAP_H
 
 #include <vector>
+#include "Event.h"
 #include "Tile.h"
+#include "Tileset.h"
 #include "Video.h"
 
 class Map {
 public:
-    Map(Video* vid, char* file);
+    Map(Video* vid, Tileset* ts);
     ~Map();
     void init();
     void render();
 
 private:
     std::vector<Tile*> tiles;
-    SDL_Surface* tileset;
+    Event* event;
     Video* video;
+    Tileset* tileset;
+
 
 };
 
