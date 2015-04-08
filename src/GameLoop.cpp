@@ -9,6 +9,9 @@ GameLoop::~GameLoop() {
 }
 
 void GameLoop::run() {
+    Uint32 ticks;
+    Uint32 last_frame_time = 0;
+
     while(running) {
         while(event->pollEvent()) {
             processEvent(event->getType());
@@ -37,8 +40,12 @@ void GameLoop::run() {
                 running = false;
             }
         }
-        game->getVideo()->delay(30);
-        update();
+
+        ticks = SDL_GetTicks();
+        if(ticks >= last_frame_time + FRAME_DELAY) {
+            last_frame_time = ticks;
+            update();
+        }
     }
 }
 

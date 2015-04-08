@@ -46,6 +46,3 @@ void Video::update() {
     SDL_UpdateWindowSurface(window);
 }
 
-void Video::delay(unsigned int ms) {
-    SDL_Delay(ms);
-}

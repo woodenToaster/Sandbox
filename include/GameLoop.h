@@ -16,6 +16,10 @@ public:
     void update();
     void processEvent(int type);
 
+    //TODO: Print frames per second to see if we're hitting our target
+    const int FRAMES_PER_SECOND = 50;
+    const int FRAME_DELAY = 1000 / FRAMES_PER_SECOND;
+
 private:
     Event* event;
     Game* game;
