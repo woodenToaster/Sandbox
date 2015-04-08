@@ -4,7 +4,7 @@ project(Sandbox)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-#add_subdirectory(test)
+add_subdirectory(test)
 add_subdirectory(images)
 
 set(INCLUDE_DIR include)
