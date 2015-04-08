@@ -3,12 +3,12 @@
 
 #include "Tile.h"
 
-class CollectibleTile : Tile {
+class CollectibleTile : public Tile {
 public:
-    CollectibleTile(SDL_Surface * collectedImg, SDL_Surface* uncollectedImg, SDL_Rect* loc);
+    CollectibleTile(SDL_Surface * collectedImg, SDL_Rect* uncollectedImgLoc, SDL_Rect* loc);
 
 private:
-    SDL_Surface* uncollectedImage;
+    SDL_Rect* uncollectedImageLocation;
     bool collected;
 
 };

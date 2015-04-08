@@ -6,7 +6,6 @@
 
 class Tile {
 public:
-    Tile();
     Tile(SDL_Surface* img, SDL_Rect* loc);
     ~Tile();
     SDL_Surface* getImage();

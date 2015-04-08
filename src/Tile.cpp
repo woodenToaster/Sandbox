@@ -1,9 +1,5 @@
 #include "Tile.h"
 
-Tile::Tile() {
-
-}
-
 Tile::Tile(SDL_Surface* img, SDL_Rect* loc): image(img), location(loc) {
 
 }
