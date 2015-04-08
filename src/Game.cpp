@@ -3,7 +3,7 @@
 Game::Game() {
     video = new Video();
     video->init();
-    Tileset* ts = new Tileset("ground.png");
+    Tileset* ts = new Tileset("images/ground.png");
     map = new Map(video, ts);
     map->init();
 }
