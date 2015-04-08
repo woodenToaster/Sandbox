@@ -1,8 +1,0 @@
-SANDBOX_ROOT = /home/chris/ClionProjects/Sandbox
-SRC_DIR = $(SANDBOX_ROOT)/src
-INCLUDE_DIR = $(SANDBOX_ROOT)/include
-WARNING_FLAGS = -O0 -Wall -Werror -ansi
-
-CC = g++
-CPPFLAGS = -g $(WARNING_FLAGS) -I$(INCLUDE_DIR) -std=c++11 `sdl-config --cflags`
-LIBS = `sdl-config --libs` -lSDL_image
