@@ -12,6 +12,10 @@ Map::~Map() {
     delete tileset;
 }
 
+Hero* Map::getHero() const {
+    return hero;
+}
+
 void Map::init() {
 
     SDL_Rect* location = new SDL_Rect{0, 0, 32, 32};

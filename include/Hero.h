@@ -10,6 +10,8 @@ public:
     void draw(Video* vid, SDL_Rect* dest);
     double getX() const;
     double getY() const;
+    void setX(double newX);
+    void setY(double newY);
 
 private:
     SDL_Surface* image;

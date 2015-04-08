@@ -22,6 +22,14 @@ double Hero::getY() const {
     return y;
 }
 
+void Hero::setX(double newX) {
+    x = newX;
+}
+
+void Hero::setY(double newY) {
+    y = newY;
+}
+
 void Hero::draw(Video* vid, SDL_Rect* dest) {
     SDL_BlitSurface(image, locationOnSpritesheet, vid->getMainSurface(), dest);
 }

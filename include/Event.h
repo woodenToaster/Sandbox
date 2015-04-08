@@ -6,7 +6,11 @@
 class Event {
 public:
     enum EventType {
-        WINDOW_CLOSED
+        WINDOW_CLOSED,
+        MOVE_UP,
+        MOVE_DOWN,
+        MOVE_LEFT,
+        MOVE_RIGHT
     };
 
     Event();

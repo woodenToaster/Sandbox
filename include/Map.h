@@ -13,6 +13,7 @@ public:
     ~Map();
     void init();
     void render();
+    Hero* getHero() const;
 
 private:
     std::vector<Tile*> tiles;
