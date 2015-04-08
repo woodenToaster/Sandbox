@@ -2,6 +2,7 @@
 #define SANDBOX_MAP_H
 
 #include <vector>
+#include "Hero.h"
 #include "Tile.h"
 #include "Tileset.h"
 #include "Video.h"
@@ -17,6 +18,7 @@ private:
     std::vector<Tile*> tiles;
     Video* video;
     Tileset* tileset;
+    Hero* hero;
 
 };
 

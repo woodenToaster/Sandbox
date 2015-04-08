@@ -5,6 +5,7 @@
 Map::Map(Video* vid, Tileset* ts):
     video(vid),
     tileset(ts) {
+    hero = new Hero("images/hero.png");
 }
 
 Map::~Map() {
@@ -38,4 +39,7 @@ void Map::render() {
     }
     SDL_Rect* cDest = new SDL_Rect{64, 64, 32, 32};
     tiles[tiles.size() - 1]->render(video, cDest);
+
+    SDL_Rect* heroDest = new SDL_Rect{hero->getX(), hero->getY()};
+    hero->draw(video, heroDest);
 }

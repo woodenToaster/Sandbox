@@ -12,14 +12,15 @@ include_directories(${SDL2_INCLUDE_DIRS} ${SDL2IMAGE_INCLUDE_DIRS} ${INCLUDE_DIR
 
 set(SOURCE_FILES
     ${SOURCE_DIR}/main.cpp
-    ${SOURCE_DIR}/Video.cpp
+    ${SOURCE_DIR}/CollectibleTile.cpp
+    ${SOURCE_DIR}/Event.cpp
     ${SOURCE_DIR}/Game.cpp
     ${SOURCE_DIR}/GameLoop.cpp
-    ${SOURCE_DIR}/Event.cpp
-    ${SOURCE_DIR}/Tile.cpp
-    ${SOURCE_DIR}/CollectibleTile.cpp
+    ${SOURCE_DIR}/Hero.cpp
     ${SOURCE_DIR}/Map.cpp
+    ${SOURCE_DIR}/Tile.cpp
     ${SOURCE_DIR}/Tileset.cpp
+    ${SOURCE_DIR}/Video.cpp
 )
 
 add_executable(Sandbox ${SOURCE_FILES})
