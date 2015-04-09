@@ -6,15 +6,18 @@
 
 class Tile {
 public:
-    Tile(SDL_Surface* img, SDL_Rect* loc);
+    Tile(SDL_Surface* img, SDL_Rect* loc, SDL_Rect* dest);
     ~Tile();
     SDL_Surface* getImage();
-    SDL_Rect* getLocationInTileset();
-    void render(Video* vid, SDL_Rect* dest);
+    SDL_Rect* getLocationInTileset() const;
+    SDL_Rect* getMapDestination() const;
+    virtual void render(Video* vid);
+    virtual void collect();
 
 protected:
     SDL_Surface* image;
-    SDL_Rect* location;
+    SDL_Rect* locationInTileset;
+    SDL_Rect* mapDestination;
 };
 
 #endif //SANDBOX_TILE_H

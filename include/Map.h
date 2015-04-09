@@ -2,6 +2,8 @@
 #define SANDBOX_MAP_H
 
 #include <vector>
+#include "SDL.h"
+
 #include "Hero.h"
 #include "Tile.h"
 #include "Tileset.h"
@@ -14,6 +16,8 @@ public:
     void init();
     void render();
     Hero* getHero() const;
+
+    void collectTile(SDL_Rect positionOnMap);
 
 private:
     std::vector<Tile*> tiles;

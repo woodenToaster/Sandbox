@@ -14,19 +14,19 @@ Hero::~Hero() {
     delete image;
 }
 
-double Hero::getX() const {
+int Hero::getX() const {
     return x;
 }
 
-double Hero::getY() const {
+int Hero::getY() const {
     return y;
 }
 
-void Hero::setX(double newX) {
+void Hero::setX(int newX) {
     x = newX;
 }
 
-void Hero::setY(double newY) {
+void Hero::setY(int newY) {
     y = newY;
 }
 

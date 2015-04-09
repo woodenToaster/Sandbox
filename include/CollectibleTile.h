@@ -5,7 +5,16 @@
 
 class CollectibleTile : public Tile {
 public:
-    CollectibleTile(SDL_Surface * collectedImg, SDL_Rect* uncollectedImgLoc, SDL_Rect* loc);
+    CollectibleTile(
+            SDL_Surface * collectedImg,
+            SDL_Rect* uncollectedImgLoc,
+            SDL_Rect* loc,
+            SDL_Rect* dest
+    );
+
+    void collect();
+    void render(Video* vid);
+
 
 private:
     SDL_Rect* uncollectedImageLocation;

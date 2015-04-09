@@ -8,16 +8,16 @@ public:
     Hero(char const* file);
     ~Hero();
     void draw(Video* vid, SDL_Rect* dest);
-    double getX() const;
-    double getY() const;
-    void setX(double newX);
-    void setY(double newY);
+    int getX() const;
+    int getY() const;
+    void setX(int newX);
+    void setY(int newY);
 
 private:
     SDL_Surface* image;
     SDL_Rect* locationOnSpritesheet;
-    double x;
-    double y;
+    int x;
+    int y;
 };
 
 #endif //SANDBOX_HERO_H
