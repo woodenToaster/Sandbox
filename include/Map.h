@@ -4,6 +4,7 @@
 #include <vector>
 #include "SDL.h"
 
+#include "CollectibleTile.h"
 #include "Hero.h"
 #include "Tile.h"
 #include "Tileset.h"
@@ -16,11 +17,12 @@ public:
     void init();
     void render();
     Hero* getHero() const;
-
+    void removeCollectibleTile(CollectibleTile* cTileToRemove);
     void collectTile(SDL_Rect positionOnMap);
 
 private:
     std::vector<Tile*> tiles;
+    std::vector<CollectibleTile*> collectibleTiles;
     Video* video;
     Tileset* tileset;
     Hero* hero;

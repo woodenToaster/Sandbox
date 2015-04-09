@@ -43,9 +43,14 @@ void GameLoop::run() {
             running = false;
         }
 
-        if((heroX > 64 && heroX < 64 + 32) && (heroY > 64 && heroY < 64 + 32)) {
-            game->getCurrentMap()->collectTile(SDL_Rect{64, 64});
-        }
+        int x = game->getCurrentMap()->getHero()->getX();
+        int y = game->getCurrentMap()->getHero()->getY();
+        int w = game->getCurrentMap()->getHero()->getWidth();
+        int h = game->getCurrentMap()->getHero()->getHeight();
+
+        SDL_Rect heroLocation{x, y, w, h};
+        game->getCurrentMap()->collectTile(heroLocation);
+
 
         //TODO: Figure out high cpu usage
         SDL_Delay(10);

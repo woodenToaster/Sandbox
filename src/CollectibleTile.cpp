@@ -13,6 +13,10 @@ void CollectibleTile::collect() {
     collected = true;
 }
 
+bool CollectibleTile::isCollected() const {
+    return collected;
+}
+
 void CollectibleTile::render(Video* vid) {
     if(!collected) {
         SDL_BlitSurface(image, locationInTileset, vid->getMainSurface(), mapDestination);

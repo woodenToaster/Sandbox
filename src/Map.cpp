@@ -31,14 +31,31 @@ void Map::init() {
     SDL_Rect* cDest = new SDL_Rect{64, 64, 32, 32};
     CollectibleTile* cTile;
     cTile = new CollectibleTile(tileset->getTilesetImg(), locationInTileset, collectibleLocation, cDest);
-    tiles.push_back(cTile);
+    collectibleTiles.push_back(cTile);
 }
 
 void Map::collectTile(SDL_Rect positionOnMap) {
-    for(Tile* tile : tiles) {
-        if((positionOnMap.x > tile->getMapDestination()->x) && (positionOnMap.x < tile->getMapDestination()->x + 32) &&
-           (positionOnMap.y > tile->getMapDestination()->y) && (positionOnMap.y < tile->getMapDestination()->y + 32)) {
-            tile->collect();
+    for(CollectibleTile* cTile : collectibleTiles) {
+
+        int x1 = cTile->getMapDestination()->x;
+        int x2 = cTile->getMapDestination()->x + 32;
+        int x3 = positionOnMap.x;
+        int x4 = positionOnMap.x + 32;
+
+        bool x_overlaps = x3 < x2 && x1 < x4;
+
+        int y1 = cTile->getMapDestination()->y;
+        int y2 = cTile->getMapDestination()->y + 32;
+        int y3 = positionOnMap.y;
+        int y4 = positionOnMap.y + 32;
+
+        bool y_overlaps = y3 < y2 && y1 < y4;
+
+        bool overlaps = x_overlaps && y_overlaps;
+
+        if(overlaps && !cTile->isCollected()) {
+            cTile->collect();
+            removeCollectibleTile(cTile);
             std::cout << "OVerlapped" << '\n';
         }
     }
@@ -54,8 +71,18 @@ void Map::render() {
 
     }
 
-    tiles[tiles.size() - 1]->render(video);
+    for(CollectibleTile* cTile : collectibleTiles) {
+        cTile->render(video);
+    }
 
     SDL_Rect* heroDest = new SDL_Rect{hero->getX(), hero->getY()};
     hero->draw(video, heroDest);
+}
+
+void Map::removeCollectibleTile(CollectibleTile *cTileToRemove) {
+    for(int i = 0; i < collectibleTiles.size(); ++i) {
+        if(collectibleTiles[i] == cTileToRemove) {
+            collectibleTiles.erase(collectibleTiles.begin() + i);
+        }
+    }
 }

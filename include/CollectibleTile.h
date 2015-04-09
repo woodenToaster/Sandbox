@@ -12,6 +12,7 @@ public:
             SDL_Rect* dest
     );
 
+    bool isCollected() const;
     void collect();
     void render(Video* vid);
 
