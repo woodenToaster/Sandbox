@@ -13,33 +13,40 @@ void GameLoop::run() {
     Uint32 last_frame_time = 0;
 
     while(running) {
+
         while(event->pollEvent()) {
             processEvent(event->getType());
-            const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
-            if(currentKeyStates[SDL_SCANCODE_UP]) {
-                game->getCurrentMap()->getHero()->setY(
-                        game->getCurrentMap()->getHero()->getY() - 2
-                );
-            }
-            else if(currentKeyStates[SDL_SCANCODE_DOWN]) {
-                game->getCurrentMap()->getHero()->setY(
-                        game->getCurrentMap()->getHero()->getY() + 2
-                );
-            }
-            else if(currentKeyStates[SDL_SCANCODE_LEFT]) {
-                game->getCurrentMap()->getHero()->setX(
-                        game->getCurrentMap()->getHero()->getX() - 2
-                );
-            }
-            else if(currentKeyStates[SDL_SCANCODE_RIGHT]) {
-                game->getCurrentMap()->getHero()->setX(
-                        game->getCurrentMap()->getHero()->getX() + 2
-                );
-            }
-            else if(currentKeyStates[SDL_SCANCODE_ESCAPE]) {
-                running = false;
-            }
         }
+
+        const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
+
+        //TODO: Remove player movement from this class
+        if(currentKeyStates[SDL_SCANCODE_UP]) {
+            game->getCurrentMap()->getHero()->setY(
+                    game->getCurrentMap()->getHero()->getY() - 2
+            );
+        }
+        if(currentKeyStates[SDL_SCANCODE_DOWN]) {
+            game->getCurrentMap()->getHero()->setY(
+                    game->getCurrentMap()->getHero()->getY() + 2
+            );
+        }
+        if(currentKeyStates[SDL_SCANCODE_LEFT]) {
+            game->getCurrentMap()->getHero()->setX(
+                    game->getCurrentMap()->getHero()->getX() - 2
+            );
+        }
+        if(currentKeyStates[SDL_SCANCODE_RIGHT]) {
+            game->getCurrentMap()->getHero()->setX(
+                    game->getCurrentMap()->getHero()->getX() + 2
+            );
+        }
+        if(currentKeyStates[SDL_SCANCODE_ESCAPE]) {
+            running = false;
+        }
+
+        //TODO: Figure out high cpu usage
+        SDL_Delay(10);
 
         ticks = SDL_GetTicks();
         if(ticks >= last_frame_time + FRAME_DELAY) {
