@@ -49,6 +49,7 @@ void GameLoop::run() {
         int h = game->getCurrentMap()->getHero()->getHeight();
 
         SDL_Rect heroLocation{x, y, w, h};
+
         game->getCurrentMap()->collectTile(heroLocation);
 
 
@@ -65,6 +66,16 @@ void GameLoop::run() {
 
 void GameLoop::update() {
     game->getCurrentMap()->render();
+
+    //Draw hero bounding box
+    int x = game->getCurrentMap()->getHero()->getX();
+    int y = game->getCurrentMap()->getHero()->getY();
+    int w = game->getCurrentMap()->getHero()->getWidth();
+    int h = game->getCurrentMap()->getHero()->getHeight();
+    SDL_Rect* heroLocation = new SDL_Rect{x, y, w, h};
+    SDL_Surface* surface = game->getVideo()->getMainSurface();
+    SDL_FillRect(surface, heroLocation, SDL_MapRGB(surface->format, 127, 127, 127));
+
     game->getVideo()->update();
 }
 

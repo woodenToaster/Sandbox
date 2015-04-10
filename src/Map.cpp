@@ -45,9 +45,9 @@ void Map::collectTile(SDL_Rect positionOnMap) {
         bool x_overlaps = x3 < x2 && x1 < x4;
 
         int y1 = cTile->getMapDestination()->y;
-        int y2 = cTile->getMapDestination()->y + 32;
+        int y2 = cTile->getMapDestination()->y + 36;
         int y3 = positionOnMap.y;
-        int y4 = positionOnMap.y + 32;
+        int y4 = positionOnMap.y + 56;
 
         bool y_overlaps = y3 < y2 && y1 < y4;
 

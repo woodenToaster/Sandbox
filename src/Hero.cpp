@@ -9,7 +9,7 @@ Hero::Hero(char const* file) {
     x = 100;
     y = 50;
     width = 36;
-    height = 36;
+    height = 52;
 }
 
 Hero::~Hero() {
