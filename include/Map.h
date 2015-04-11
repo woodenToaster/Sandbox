@@ -17,13 +17,17 @@ public:
     ~Map();
     void init();
     void drawMapEntities();
+    void drawLayer0Tiles();
+    void drawLayer1Tiles();
+    void drawCollectibleTiles();
     Hero* getHero() const;
     void removeCollectibleTile(CollectibleTile* cTileToRemove);
     void collectTile(SDL_Rect positionOnMap);
 
 private:
     std::vector<MapEntity*> mapEntities;
-    std::vector<Tile*> tiles;
+    std::vector<Tile*> layer0Tiles;
+    std::vector<Tile*> layer1Tiles;
     std::vector<CollectibleTile*> collectibleTiles;
     Video* video;
     Tileset* tileset;

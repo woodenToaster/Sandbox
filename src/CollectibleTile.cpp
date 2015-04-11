@@ -5,7 +5,7 @@ CollectibleTile::CollectibleTile(
         SDL_Rect* uncollectedImgLoc,
         SDL_Rect* loc,
         SDL_Rect* dest
-    ): uncollectedImageLocation(uncollectedImgLoc), collected(false), Tile(collectedImg, loc, dest) {
+    ): uncollectedImageLocation(uncollectedImgLoc), collected(false), Tile(collectedImg, loc, dest, 3) {
 
 }
 

@@ -1,9 +1,10 @@
 #include "Tile.h"
 
-Tile::Tile(SDL_Surface* img, SDL_Rect* loc, SDL_Rect* dest):
+Tile::Tile(SDL_Surface* img, SDL_Rect* loc, SDL_Rect* dest, int layer):
         image(img),
         locationInTileset(loc),
-        mapDestination(dest) {
+        mapDestination(dest),
+        layer(layer) {
 
 }
 
@@ -34,4 +35,8 @@ void Tile::draw(Game* game, Map* map) {
 
 void Tile::collect() {
 
+}
+
+int Tile::getLayer() {
+    return layer;
 }
