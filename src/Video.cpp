@@ -38,7 +38,7 @@ void Video::setSurfaceToMain() {
     surface = SDL_GetWindowSurface(window);
 }
 
-void Video::fillRect(int r, int g, int b) {
+void Video::fillRect(Uint8 r, Uint8 g, Uint8 b) {
     SDL_FillRect(surface, NULL, SDL_MapRGB(surface->format, r, g, b));
 }
 

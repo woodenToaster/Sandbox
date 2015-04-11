@@ -1,7 +1,6 @@
 #ifndef SANDBOX_HERO_H
 #define SANDBOX_HERO_H
 
-
 #include "MapEntity.h"
 #include "Video.h"
 
@@ -14,10 +13,12 @@ public:
     ~Hero();
     void draw(Game* game, Map* map);
     void draw(Video* vid, SDL_Rect* dest);
+    SDL_Rect* update(Uint8 const* keyState);
     int getX() const;
     int getY() const;
     int getWidth() const;
     int getHeight() const;
+    SDL_Rect getCurrentLocation() const;
     void setX(int newX);
     void setY(int newY);
 

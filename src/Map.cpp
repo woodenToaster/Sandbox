@@ -68,7 +68,6 @@ void Map::drawMapEntities() {
             tiles[i]->render(video);
             i++;
         }
-
     }
 
     for(CollectibleTile* cTile : collectibleTiles) {

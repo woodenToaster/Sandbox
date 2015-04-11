@@ -45,4 +45,28 @@ int Hero::getHeight() const {
 }
 
 //TODO: Figure out how inheritance works
-void Hero::draw(Game* game, Map* map) {}
+void Hero::draw(Game* game, Map* map) {
+
+}
+
+SDL_Rect* Hero::update(Uint8 const* keyState) {
+
+    if(keyState[SDL_SCANCODE_UP]) {
+        y = y - 1;
+    }
+    if(keyState[SDL_SCANCODE_DOWN]) {
+        y = y + 1;
+    }
+    if(keyState[SDL_SCANCODE_LEFT]) {
+        x = x - 1;
+    }
+    if(keyState[SDL_SCANCODE_RIGHT]) {
+        x = x + 1;
+    }
+
+    return new SDL_Rect{x, y, width, height};
+}
+
+SDL_Rect Hero::getCurrentLocation() const {
+    return SDL_Rect{x, y, width, height};
+}

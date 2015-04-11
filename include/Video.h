@@ -11,7 +11,7 @@ public:
     SDL_Surface* getMainSurface();
     SDL_Window* getMainWindow();
     void init();
-    void fillRect(int r, int g, int b);
+    void fillRect(Uint8 r, Uint8 g, Uint8 b);
     void update();
     void setSurfaceToMain();
 
