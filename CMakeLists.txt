@@ -18,6 +18,7 @@ set(SOURCE_FILES
     ${SOURCE_DIR}/GameLoop.cpp
     ${SOURCE_DIR}/Hero.cpp
     ${SOURCE_DIR}/Map.cpp
+    ${SOURCE_DIR}/MapEntity.cpp
     ${SOURCE_DIR}/Tile.cpp
     ${SOURCE_DIR}/Tileset.cpp
     ${SOURCE_DIR}/Video.cpp

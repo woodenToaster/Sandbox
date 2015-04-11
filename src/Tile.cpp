@@ -28,6 +28,10 @@ void Tile::render(Video* vid) {
     SDL_BlitSurface(image, locationInTileset, vid->getMainSurface(), mapDestination);
 }
 
+void Tile::draw(Game* game, Map* map) {
+
+}
+
 void Tile::collect() {
 
 }

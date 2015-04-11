@@ -1,17 +1,19 @@
 #ifndef SANDBOX_HERO_H
 #define SANDBOX_HERO_H
 
-#include "Map.h"
+
 #include "MapEntity.h"
 #include "Video.h"
+
+class Map;
+class Game;
 
 class Hero : public MapEntity {
 public:
     Hero(char const* file);
     ~Hero();
+    void draw(Game* game, Map* map);
     void draw(Video* vid, SDL_Rect* dest);
-    bool checkCollision(MapEntity* other, Map* map);
-    void draw();
     int getX() const;
     int getY() const;
     int getWidth() const;

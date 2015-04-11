@@ -56,7 +56,7 @@ void Map::collectTile(SDL_Rect positionOnMap) {
         if(overlaps && !cTile->isCollected()) {
             cTile->collect();
             removeCollectibleTile(cTile);
-            std::cout << "OVerlapped" << '\n';
+            std::cout << "Overlapped" << '\n';
         }
     }
 }

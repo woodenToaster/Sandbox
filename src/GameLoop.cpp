@@ -1,3 +1,4 @@
+#include <iostream>
 #include "GameLoop.h"
 
 GameLoop::GameLoop(Game* game): game(game), running(true) {
