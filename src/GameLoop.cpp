@@ -47,9 +47,9 @@ void GameLoop::update() {
     game->getCurrentMap()->drawMapEntities();
 
     //Draw hero bounding box
-    SDL_Rect heroLocation = game->getCurrentMap()->getHero()->getCurrentLocation();
-    SDL_Surface* surface = game->getVideo()->getMainSurface();
-    SDL_FillRect(surface, &heroLocation, SDL_MapRGB(surface->format, 127, 127, 127));
+//    SDL_Rect* heroLocation = game->getCurrentMap()->getHero()->getCurrentMapLocation();
+//    SDL_Surface* surface = game->getVideo()->getMainSurface();
+//    SDL_FillRect(surface, heroLocation, SDL_MapRGB(surface->format, 127, 127, 127));
 
     game->getVideo()->update();
 }

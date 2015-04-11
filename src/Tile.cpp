@@ -1,3 +1,4 @@
+#include "Map.h"
 #include "Tile.h"
 
 Tile::Tile(SDL_Surface* img, SDL_Rect* loc, SDL_Rect* dest, int layer):
@@ -25,12 +26,8 @@ SDL_Rect* Tile::getMapDestination() const {
     return mapDestination;
 }
 
-void Tile::render(Video* vid) {
-    SDL_BlitSurface(image, locationInTileset, vid->getMainSurface(), mapDestination);
-}
-
-void Tile::draw(Game* game, Map* map) {
-
+void Tile::draw(Map* map) {
+    SDL_BlitSurface(image, locationInTileset, map->getVideo()->getMainSurface(), mapDestination);
 }
 
 void Tile::collect() {

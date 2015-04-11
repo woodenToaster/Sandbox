@@ -14,8 +14,7 @@ public:
     SDL_Rect* getLocationInTileset() const;
     SDL_Rect* getMapDestination() const;
     int getLayer();
-    virtual void draw(Game* game, Map* map);
-    virtual void render(Video* vid);
+    void draw(Map* map);
     virtual void collect();
 
 protected:

@@ -15,10 +15,11 @@ class Map {
 public:
     Map(Video* vid, Tileset* ts);
     ~Map();
+
+    Video* getVideo() const;
+
     void init();
     void drawMapEntities();
-    void drawLayer0Tiles();
-    void drawLayer1Tiles();
     void drawCollectibleTiles();
     Hero* getHero() const;
     void removeCollectibleTile(CollectibleTile* cTileToRemove);
@@ -26,9 +27,8 @@ public:
 
 private:
     std::vector<MapEntity*> mapEntities;
-    std::vector<Tile*> layer0Tiles;
-    std::vector<Tile*> layer1Tiles;
-    std::vector<CollectibleTile*> collectibleTiles;
+    std::vector<std::vector<Tile*>*>* layers;
+    std::vector<CollectibleTile*>* collectibleTiles;
     Video* video;
     Tileset* tileset;
     Hero* hero;
