@@ -26,6 +26,6 @@ void CollectibleTile::render(Video* vid) {
     }
 
     //Draw bounding box
-    SDL_FillRect(vid->getMainSurface(), this->getMapDestination(), SDL_MapRGB(image->format, 127, 127, 127));
+    //SDL_FillRect(vid->getMainSurface(), this->getMapDestination(), SDL_MapRGB(image->format, 127, 127, 127));
 }
 

@@ -61,7 +61,7 @@ void Map::collectTile(SDL_Rect positionOnMap) {
     }
 }
 
-void Map::render() {
+void Map::drawMapEntities() {
     int i = 0;
     for(int y = 0; y < 15; ++y) {
         for(int x = 0; x < 20; ++x) {

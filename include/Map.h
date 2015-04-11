@@ -6,6 +6,7 @@
 
 #include "CollectibleTile.h"
 #include "Hero.h"
+#include "MapEntity.h"
 #include "Tile.h"
 #include "Tileset.h"
 #include "Video.h"
@@ -15,12 +16,13 @@ public:
     Map(Video* vid, Tileset* ts);
     ~Map();
     void init();
-    void render();
+    void drawMapEntities();
     Hero* getHero() const;
     void removeCollectibleTile(CollectibleTile* cTileToRemove);
     void collectTile(SDL_Rect positionOnMap);
 
 private:
+    std::vector<MapEntity*> mapEntities;
     std::vector<Tile*> tiles;
     std::vector<CollectibleTile*> collectibleTiles;
     Video* video;

@@ -43,3 +43,10 @@ int Hero::getWidth() const {
 int Hero::getHeight() const {
     return height;
 }
+
+bool Hero::checkCollision(MapEntity* other, Map* map) {
+    return false;
+}
+
+//TODO: Figure out how inheritance works
+void Hero::draw() {}
