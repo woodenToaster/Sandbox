@@ -24,11 +24,13 @@ public:
     Hero* getHero() const;
     void removeCollectibleTile(CollectibleTile* cTileToRemove);
     void collectTile(SDL_Rect positionOnMap);
+    bool checkCollision(SDL_Rect* entityBox) const;
+    Tile* getTileByPosition(int x, int y) const;
 
 private:
     std::vector<MapEntity*> mapEntities;
-    std::vector<std::vector<Tile*>*>* layers;
-    std::vector<CollectibleTile*>* collectibleTiles;
+    std::vector<std::vector<Tile*>> layers;
+    std::vector<CollectibleTile*> collectibleTiles;
     Video* video;
     Tileset* tileset;
     Hero* hero;

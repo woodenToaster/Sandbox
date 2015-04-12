@@ -4,29 +4,23 @@
 
 Map::Map(Video* vid, Tileset* ts):
     video(vid),
-    tileset(ts),
-    layers(new std::vector<std::vector<Tile*>*>(3)),
-    collectibleTiles(new std::vector<CollectibleTile*>()) {
+    tileset(ts) {
+
     hero = new Hero("images/hero.png");
 }
 
 Map::~Map() {
     delete hero;
-    for(std::vector<Tile*>* layer : *layers) {
-        for(Tile* tile : *layer) {
+
+    for(std::vector<Tile*> layer : layers) {
+        for(Tile* tile : layer) {
             delete tile;
         }
-        layer->clear();
     }
-    layers->clear();
-    delete layers;
 
-    for(CollectibleTile* cTile : *collectibleTiles) {
+    for(CollectibleTile* cTile : collectibleTiles) {
         delete cTile;
     }
-
-    collectibleTiles->clear();
-    delete collectibleTiles;
 }
 
 Hero* Map::getHero() const {
@@ -39,27 +33,30 @@ Video* Map::getVideo() const {
 
 void Map::init() {
 
-    std::vector<Tile*>* layer0 = new std::vector<Tile*>();
+
     //Make grass floor tiles
+    std::vector<Tile*> layer0;
     SDL_Rect* locationInTileset = new SDL_Rect{0, 0, 32, 32};
     for(int y = 0; y < 15; ++y) {
         for(int x = 0; x < 20; ++x) {
             SDL_Rect* destinationInMap = new SDL_Rect{x * 32, y * 32, 32, 32};
             Tile* tile1 = new Tile(tileset->getTilesetImg(), locationInTileset, destinationInMap, 0);
-            layer0->push_back(tile1);
+            layer0.push_back(tile1);
         }
     }
-    layers->push_back(layer0);
+    layers.push_back(layer0);
 
-    std::vector<Tile*>* layer1 = new std::vector<Tile*>();
+
     //Make pillars
+    std::vector<Tile*> layer1;
     SDL_Rect* pillarLocationInTileset = new SDL_Rect{456, 160, 16, 32};
     for(int i = 0; i < 6; ++i) {
         SDL_Rect* pillarDestination = new SDL_Rect{8 * 32 + 16 * i, 8 * 32};
         Tile* pillar = new Tile(tileset->getTilesetImg(), pillarLocationInTileset, pillarDestination, 1);
-        layer1->push_back(pillar);
+        pillar->setBlocking(true);
+        layer1.push_back(pillar);
     }
-    layers->push_back(layer1);
+    layers.push_back(layer1);
 
 
 
@@ -68,13 +65,13 @@ void Map::init() {
     SDL_Rect* cDest = new SDL_Rect{64, 64, 32, 32};
     CollectibleTile* cTile;
     cTile = new CollectibleTile(tileset->getTilesetImg(), locationInTileset, collectibleLocation, cDest);
-    collectibleTiles->push_back(cTile);
+    collectibleTiles.push_back(cTile);
 
 
 }
 
 void Map::collectTile(SDL_Rect positionOnMap) {
-    for(CollectibleTile* cTile : *collectibleTiles) {
+    for(CollectibleTile* cTile : collectibleTiles) {
 
         int x1 = cTile->getMapDestination()->x;
         int x2 = cTile->getMapDestination()->x + 32;
@@ -102,8 +99,8 @@ void Map::collectTile(SDL_Rect positionOnMap) {
 
 void Map::drawMapEntities() {
 
-    for(std::vector<Tile*>* layer : *layers) {
-        for(Tile* tile : *layer) {
+    for(std::vector<Tile*> layer : layers) {
+        for(Tile* tile : layer) {
             tile->draw(this);
         }
     }
@@ -111,23 +108,43 @@ void Map::drawMapEntities() {
     drawCollectibleTiles();
 
     SDL_Rect* heroDest = new SDL_Rect{hero->getX(), hero->getY()};
-    hero->draw(video, heroDest);
+    hero->draw(this);
 }
 
 void Map::drawCollectibleTiles() {
-    for(CollectibleTile* cTile : *collectibleTiles) {
+    for(CollectibleTile* cTile : collectibleTiles) {
         cTile->draw(this);
     }
 }
 
 void Map::removeCollectibleTile(CollectibleTile *cTileToRemove) {
-    for(int i = 0; i < collectibleTiles->size(); ++i) {
+    for(int i = 0; i < collectibleTiles.size(); ++i) {
         if(collectibleTiles[i] == cTileToRemove) {
-            collectibleTiles->erase(collectibleTiles->begin() + i);
+            collectibleTiles.erase(collectibleTiles.begin() + i);
         }
     }
 }
 
 
+bool Map::checkCollision(SDL_Rect* entityBox) const {
+    //Get currentTile based on center of entityBox
+    int centerX = entityBox->x + (entityBox->x + entityBox->w) / 2;
+    int centerY = entityBox->y + (entityBox->y + entityBox->h) / 2;
 
+    Tile* currentTile = getTileByPosition(centerX, centerY);
 
+    if(currentTile == nullptr) {
+        return false;
+    }
+
+    return currentTile->overlaps(entityBox) && currentTile->isBlockingTile();
+}
+
+Tile *Map::getTileByPosition(int x, int y) const {
+    for(Tile* tile : layers[1]) {
+        if(tile->contains(x, y)) {
+            return tile;
+        }
+    }
+    return nullptr;
+}

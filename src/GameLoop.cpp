@@ -28,7 +28,7 @@ void GameLoop::run() {
             running = false;
         }
 
-        SDL_Rect* heroLocation = game->getCurrentMap()->getHero()->update(currentKeyStates);
+        SDL_Rect* heroLocation = game->getCurrentMap()->getHero()->update(currentKeyStates, game->getCurrentMap());
 
         game->getCurrentMap()->collectTile(*heroLocation);
 

@@ -9,14 +9,24 @@ class Game;
 
 class Hero : public MapEntity {
 public:
+    enum Facing {
+        NORTH,
+        SOUTH,
+        EAST,
+        WEST
+    };
+
     Hero(char const* file);
     ~Hero();
     void draw(Map* map);
-    void draw(Video* vid, SDL_Rect* dest);
-    SDL_Rect* update(Uint8 const* keyState);
-
+    SDL_Rect* update(Uint8 const* keyState, Map* map);
+    bool checkCollision(Map* map, SDL_Rect desiredLocation);
     void setX(int newX);
     void setY(int newY);
+    SDL_Rect getMoveUpBoundingBox();
+    SDL_Rect getMoveDownBoundingBox();
+    SDL_Rect getMoveLeftBoundingBox();
+    SDL_Rect getMoveRightBoundingBox();
 
 private:
     SDL_Rect* locationOnSpritesheet;

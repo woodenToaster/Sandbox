@@ -15,13 +15,18 @@ public:
     SDL_Rect* getMapDestination() const;
     int getLayer();
     void draw(Map* map);
+    bool isBlockingTile();
+    void setBlocking(bool b);
     virtual void collect();
+    bool contains(int x, int y);
+    bool overlaps(SDL_Rect* entityBox);
 
 protected:
     SDL_Surface* image;
     SDL_Rect* locationInTileset;
     SDL_Rect* mapDestination;
     int layer;
+    bool blocking;
 };
 
 #endif //SANDBOX_TILE_H
