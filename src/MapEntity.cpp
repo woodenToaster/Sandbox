@@ -1,11 +1,12 @@
-#include <MapEntity.h>
+#include "MapEntity.h"
+#include "Map.h"
 
 MapEntity::~MapEntity() {
     delete locationOnMap;
     delete image;
 }
 
-bool MapEntity::checkCollision() {
+bool MapEntity::checkCollision(Map* map, SDL_Rect desiredLocation) {
     return false;
 }
 

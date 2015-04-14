@@ -11,6 +11,7 @@ public:
     ~Game();
     Video* getVideo() const;
     Map* getCurrentMap() const;
+    void update();
 
 private:
     Video* video;

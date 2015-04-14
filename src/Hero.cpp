@@ -54,7 +54,7 @@ SDL_Rect* Hero::update(Uint8 const* keyState, Map* map) {
 }
 
 bool Hero::checkCollision(Map* map, SDL_Rect desiredLocation) {
-    return map->checkCollision(&desiredLocation);
+    return map->checkCollision(desiredLocation);
 }
 
 SDL_Rect Hero::getMoveUpBoundingBox() {
@@ -63,7 +63,7 @@ SDL_Rect Hero::getMoveUpBoundingBox() {
     int y1 = locationOnMap->y - 1;
     int y2 = locationOnMap->y + locationOnMap->h - 1;
 
-    return SDL_Rect{x1, x2, y1, y2};
+    return SDL_Rect{x1, y1, x2, y2};
 }
 
 SDL_Rect Hero::getMoveDownBoundingBox() {
@@ -72,7 +72,7 @@ SDL_Rect Hero::getMoveDownBoundingBox() {
     int y1 = locationOnMap->y + 1;
     int y2 = locationOnMap->y + locationOnMap->h + 1;
 
-    return SDL_Rect{x1, x2, y1, y2};
+    return SDL_Rect{x1, y1, x2, y2};
 }
 
 SDL_Rect Hero::getMoveLeftBoundingBox() {
@@ -81,7 +81,7 @@ SDL_Rect Hero::getMoveLeftBoundingBox() {
     int y1 = locationOnMap->y;
     int y2 = locationOnMap->y + locationOnMap->h;
 
-    return SDL_Rect{x1, x2, y1, y2};
+    return SDL_Rect{x1, y1, x2, y2};
 }
 
 SDL_Rect Hero::getMoveRightBoundingBox() {
@@ -90,5 +90,5 @@ SDL_Rect Hero::getMoveRightBoundingBox() {
     int y1 = locationOnMap->y;
     int y2 = locationOnMap->y + locationOnMap->h;
 
-    return SDL_Rect{x1, x2, y1, y2};
+    return SDL_Rect{x1, y1, x2, y2};
 }

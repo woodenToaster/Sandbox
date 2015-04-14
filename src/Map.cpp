@@ -10,6 +10,7 @@ Map::Map(Video* vid, Tileset* ts):
 }
 
 Map::~Map() {
+
     delete hero;
 
     for(std::vector<Tile*> layer : layers) {
@@ -73,15 +74,15 @@ void Map::init() {
 void Map::collectTile(SDL_Rect positionOnMap) {
     for(CollectibleTile* cTile : collectibleTiles) {
 
-        int x1 = cTile->getMapDestination()->x;
-        int x2 = cTile->getMapDestination()->x + 32;
+        int x1 = cTile->getCurrentMapLocation()->x;
+        int x2 = cTile->getCurrentMapLocation()->x + 32;
         int x3 = positionOnMap.x;
         int x4 = positionOnMap.x + 32;
 
         bool x_overlaps = x3 < x2 && x1 < x4;
 
-        int y1 = cTile->getMapDestination()->y;
-        int y2 = cTile->getMapDestination()->y + 36;
+        int y1 = cTile->getCurrentMapLocation()->y;
+        int y2 = cTile->getCurrentMapLocation()->y + 36;
         int y3 = positionOnMap.y;
         int y4 = positionOnMap.y + 56;
 
@@ -126,21 +127,25 @@ void Map::removeCollectibleTile(CollectibleTile *cTileToRemove) {
 }
 
 
-bool Map::checkCollision(SDL_Rect* entityBox) const {
+bool Map::checkCollision(SDL_Rect entityBox) const {
     //Get currentTile based on center of entityBox
-    int centerX = entityBox->x + (entityBox->x + entityBox->w) / 2;
-    int centerY = entityBox->y + (entityBox->y + entityBox->h) / 2;
+    int centerX = entityBox.x + (entityBox.x + entityBox.w) / 2;
+    int centerY = entityBox.y + (entityBox.y + entityBox.h) / 2;
 
     Tile* currentTile = getTileByPosition(centerX, centerY);
 
     if(currentTile == nullptr) {
         return false;
     }
+    std::cout << currentTile->getCurrentMapLocation()->x << '\n';
+    std::cout << currentTile->getCurrentMapLocation()->y << '\n';
+    std::cout << currentTile->getLayer() << '\n';
 
     return currentTile->overlaps(entityBox) && currentTile->isBlockingTile();
 }
 
 Tile *Map::getTileByPosition(int x, int y) const {
+
     for(Tile* tile : layers[1]) {
         if(tile->contains(x, y)) {
             return tile;

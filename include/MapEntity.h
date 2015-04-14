@@ -10,7 +10,7 @@ class MapEntity {
 public:
     virtual ~MapEntity();
     virtual void draw(Map* map) = 0;
-    virtual bool checkCollision();
+    virtual bool checkCollision(Map* map, SDL_Rect desiredLocation);
 
     int getX() const;
     int getY() const;

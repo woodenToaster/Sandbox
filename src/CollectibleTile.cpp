@@ -20,10 +20,10 @@ bool CollectibleTile::isCollected() const {
 
 void CollectibleTile::draw(Map* map) {
     if(!collected) {
-        SDL_BlitSurface(image, locationInTileset, map->getVideo()->getMainSurface(), mapDestination);
+        SDL_BlitSurface(image, locationInTileset, map->getVideo()->getMainSurface(), locationOnMap);
     }
     else {
-        SDL_BlitSurface(image, uncollectedImageLocation, map->getVideo()->getMainSurface(), mapDestination);
+        SDL_BlitSurface(image, uncollectedImageLocation, map->getVideo()->getMainSurface(), locationOnMap);
     }
 
     //Draw bounding box

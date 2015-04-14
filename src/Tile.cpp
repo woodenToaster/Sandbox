@@ -2,12 +2,11 @@
 #include "Tile.h"
 
 Tile::Tile(SDL_Surface* img, SDL_Rect* loc, SDL_Rect* dest, int layer):
-        image(img),
         locationInTileset(loc),
-        mapDestination(dest),
         layer(layer),
         blocking(false) {
-
+    MapEntity::image = img;
+    MapEntity::locationOnMap = dest;
 }
 
 Tile::~Tile() {
@@ -22,12 +21,8 @@ SDL_Rect* Tile::getLocationInTileset() const{
     return locationInTileset;
 }
 
-SDL_Rect* Tile::getMapDestination() const {
-    return mapDestination;
-}
-
 void Tile::draw(Map* map) {
-    SDL_BlitSurface(image, locationInTileset, map->getVideo()->getMainSurface(), mapDestination);
+    SDL_BlitSurface(image, locationInTileset, map->getVideo()->getMainSurface(), locationOnMap);
 }
 
 void Tile::collect() {
@@ -55,18 +50,18 @@ bool Tile::contains(int x, int y) {
     return x1 && x2 && y1 && y2;
 }
 
-bool Tile::overlaps(SDL_Rect *entityBox) {
+bool Tile::overlaps(SDL_Rect entityBox) {
     int x1 = locationOnMap->x;
     int x2 = locationOnMap->x + locationInTileset->w;
-    int x3 = entityBox->x;
-    int x4 = entityBox->x + entityBox->w;
+    int x3 = entityBox.x;
+    int x4 = entityBox.x + entityBox.w;
 
     bool x_overlaps = x3 < x2 && x1 < x4;
 
     int y1 = locationOnMap->y;
     int y2 = locationOnMap->y + locationInTileset->h;
-    int y3 = entityBox->y;
-    int y4 = entityBox->y + entityBox->h;
+    int y3 = entityBox.y;
+    int y4 = entityBox.y + entityBox.h;
 
     bool y_overlaps = y3 < y2 && y1 < y4;
 

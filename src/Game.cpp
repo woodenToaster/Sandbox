@@ -20,3 +20,7 @@ Video* Game::getVideo() const {
 Map* Game::getCurrentMap() const {
     return map;
 }
+
+void Game::update() {
+
+}

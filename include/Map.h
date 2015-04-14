@@ -1,6 +1,7 @@
 #ifndef SANDBOX_MAP_H
 #define SANDBOX_MAP_H
 
+#include <memory>
 #include <vector>
 #include "SDL.h"
 
@@ -24,7 +25,7 @@ public:
     Hero* getHero() const;
     void removeCollectibleTile(CollectibleTile* cTileToRemove);
     void collectTile(SDL_Rect positionOnMap);
-    bool checkCollision(SDL_Rect* entityBox) const;
+    bool checkCollision(SDL_Rect entityBox) const;
     Tile* getTileByPosition(int x, int y) const;
 
 private:

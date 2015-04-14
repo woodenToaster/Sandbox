@@ -20,7 +20,7 @@ public:
     ~Hero();
     void draw(Map* map);
     SDL_Rect* update(Uint8 const* keyState, Map* map);
-    bool checkCollision(Map* map, SDL_Rect desiredLocation);
+    bool checkCollision(Map* map, SDL_Rect desiredLocation) override;
     void setX(int newX);
     void setY(int newY);
     SDL_Rect getMoveUpBoundingBox();
